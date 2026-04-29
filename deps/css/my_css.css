@@ -1,18 +1,26 @@
-body {
-  background-image: url("../images/bcg.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
-  height: 100%;
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* Убираем жесткую высоту, чтобы body растягивался по контенту */
+    height: auto; 
+    min-height: 100%;
 }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+body {
+    background-image: url("../images/bcg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    body {
+        /* На мобильных фиксированный фон часто "ломает" верстку */
+        background-attachment: scroll !important; 
+        background-size: cover;
+        background-position: center top;
+    }
 }
 
 
@@ -100,19 +108,31 @@ body {
     }
 }
 
-/* Центрирование бренда */
 .navbar-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-right: 0 !important;
-    z-index: 1000; /* Чтобы логотип всегда был сверху */
+    z-index: 1000;
 }
 
-/* На мобильных устройствах, чтобы логотип не перекрывался кнопкой "бургер" */
+/* Мобилки: логотип возвращается в поток, чтобы не мешать бургеру */
 @media (max-width: 991px) {
+    .navbar-center {
+        position: static; 
+        transform: none;
+        left: auto;
+        margin-left: 0;
+    }
+
+    .container-fluid {
+        /* Распределяем лого и кнопку по краям */
+        display: flex;
+        justify-content: space-between !important;
+    }
+    
     .navbar-collapse {
-        margin-top: 50px; /* Даем место логотипу, когда меню раскрыто */
+        /* Убираем лишний отступ, чтобы меню не улетало вниз */
+        margin-top: 15px; 
     }
 }
 
@@ -131,13 +151,30 @@ body {
 }
 
 .start-section,
-.trener-section  
+.trener-section, 
 .about-section {
     width: 100%;        /* полная ширина */
     position: relative; /* независимое позиционирование */
     margin-top: 0;      /* убраны отступы сверху */
     clear: both; 
     min-height: 100vh;       /* ПРИНУДИТЕЛЬНЫЙ ПЕРЕНОС - самое важное! */
+}
+
+@media (max-width: 768px) {
+    .start-section,
+    .trener-section,
+    .about-section {
+        /* На мобилках лучше давать контенту дышать, чем жестко ограничивать высотой */
+        min-height: auto; 
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    
+    /* Уменьшаем огромный отступ в начале страницы для мобилок */
+    .promo-box {
+        margin-top: 50px; 
+        width: 100%;
+    }
 }
 
 
@@ -187,4 +224,13 @@ body {
 /* Исправляем отступ для якоря (чтобы хедер не закрывал заголовок при переходе) */
 section[id] {
     scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+    body {
+        /* На мобилках фон будет скроллиться вместе с контентом, что уберет баги */
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center top; /* Чтобы головы на фото не обрезались */
+    }
 }
