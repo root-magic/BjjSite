@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background-image: url("../images/bcg.png");
+    background-color: #ffffff;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -54,11 +54,9 @@ body {
   font-size: 0.7rem;
 }
 
-.navbar-blur {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); /* Для поддержки Safari */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.navbar-color {
+    background-color: #212529 !important; /* Стандартный темно-серый Bootstrap */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Светлая полоска снизу */
 }
 
 .hide {
@@ -143,12 +141,7 @@ body {
     letter-spacing: 2px;
 }
 
-.navbar-blur {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); /* Для поддержки Safari */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
+
 
 .start-section,
 .trener-section, 
@@ -179,9 +172,9 @@ body {
 
 
 .coach-details {
-    /* Сделаем фон чуть плотнее, чем у навбара, для читаемости */
-    background-color: rgba(255, 255, 255, 0.681) !important;
-    border-left: 4px solid #ffffff; /* Белая линия слева подчеркнет брутальность */
+  
+    background-color: #212529 !important;
+    border-left: 4px solid #ffffff; 
 }
 
 @media (max-width: 991px) {
@@ -234,3 +227,4 @@ section[id] {
         background-position: center top; /* Чтобы головы на фото не обрезались */
     }
 }
+
